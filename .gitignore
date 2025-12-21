@@ -13,7 +13,10 @@
 *.ipr
 
 ### VS Code ###
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/java-formatter.xml
+
 
 ### Eclipse / STS ###
 .apt_generated
