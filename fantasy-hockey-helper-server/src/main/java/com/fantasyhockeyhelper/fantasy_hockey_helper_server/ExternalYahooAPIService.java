@@ -57,7 +57,7 @@ public class ExternalYahooAPIService {
     response.sendRedirect(yahooAuthUrl.toString());
   }
 
-  @PostMapping("/yahoo/callback")
+  @GetMapping("/yahoo/callback")
   public Mono<String> handleYahooOAuthCallback(@RequestParam String code) {
     return webClient
         .post()
@@ -65,7 +65,7 @@ public class ExternalYahooAPIService {
         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
         .body(BodyInserters.fromFormData("client_id", apiKey)
             .with("client_secret", apiSecret)
-            .with("redirect_uri", "oob")
+            .with("redirect_uri", "https://condignly-malonyl-kristie.ngrok-free.dev/yahoo/callback")
             .with("code", code)
             .with("grant_type", "authorization_code"))
         .retrieve()
