@@ -49,7 +49,7 @@ public class YahooAuthService {
         return yahooAuthUrl;
     }
 
-    public Mono<String> exchangeCodeForToken(String code) {
+    public Mono<YahooTokenResponseDTO> exchangeCodeForToken(String code) {
         return webClient.post()
                 .uri("/get_token")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -59,6 +59,6 @@ public class YahooAuthService {
                         .with("code", code)
                         .with("grant_type", "authorization_code"))
                 .retrieve()
-                .bodyToMono(String.class);
+                .bodyToMono(YahooTokenResponseDTO.class);
     }
 }

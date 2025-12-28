@@ -36,7 +36,7 @@ public class YahooAuthController {
     }
 
     @GetMapping("/yahoo/callback")
-    public Mono<String> handleYahooOAuthCallback(@RequestParam String code) {
+    public Mono<YahooTokenResponseDTO> handleYahooOAuthCallback(@RequestParam String code) {
         return yahooAuthService.exchangeCodeForToken(code);
     }
 }
